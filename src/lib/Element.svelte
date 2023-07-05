@@ -12,7 +12,7 @@
     // console.log(positionObj);
     // @ts-ignore
     setTimeout(() => {
-      styleString = `top:${positionObj.top}px;left:${positionObj.left}px;transform:rotateZ(${positionObj.rotateZ}deg);opacity: 1;height:84px`;
+      styleString = `top:${positionObj.top}px;left:${positionObj.left}px;transform:rotateZ(${positionObj.rotateZ}deg);opacity: 1;height:104px`;
     }, 10);
   });
 </script>

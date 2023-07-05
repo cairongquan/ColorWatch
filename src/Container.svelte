@@ -1,7 +1,12 @@
 <script>
   // @ts-nocheck
-  import Element from "./lib/Element.svelte";
+  import Element from "$lib/Element.svelte";
   import "./element.style.css";
+
+  import Minute from "$lib/Minute.svelte";
+  import Hour from "$lib/Hour.svelte";
+  import Second from "$lib/Second.svelte";
+  import Dot from "$lib/Dot.svelte";
 
   import { clockEname } from "./color.config";
   import { onMount } from "svelte";
@@ -20,8 +25,8 @@
     let timer = setInterval(() => {
       let childPosition = child.getBoundingClientRect();
       positionArray.push({
-        left: (childPosition.left - leftNum - 14.5).toFixed(2),
-        top: (childPosition.top - topNum - 42).toFixed(2),
+        left: (childPosition.left - leftNum - 14).toFixed(2),
+        top: (childPosition.top - topNum - 52).toFixed(2),
         rotateZ: i,
       });
       i += 30;
@@ -43,6 +48,10 @@
       <Element bind:className={clockEname[index]} bind:positionObj={item} />
     {/each}
   {/if}
+  <Minute />
+  <Hour />
+  <Second />
+  <Dot />
   <div class="round">
     <div class="round-child" />
   </div>
@@ -50,7 +59,7 @@
 
 <style>
   .container {
-    box-shadow: 1px 1px 10px .1px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 10px 0.1px rgba(0, 0, 0, 0.1);
     background-color: #fcfdfe;
     position: absolute;
     left: 50%;
