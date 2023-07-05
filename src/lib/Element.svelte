@@ -12,7 +12,7 @@
     // console.log(positionObj);
     // @ts-ignore
     setTimeout(() => {
-      styleString = `top:${positionObj.top}px;left:${positionObj.left}px;transform:rotateZ(${positionObj.rotateZ}deg);opacity: 1;`;
+      styleString = `top:${positionObj.top}px;left:${positionObj.left}px;transform:rotateZ(${positionObj.rotateZ}deg);opacity: 1;height:84px`;
     }, 10);
   });
 </script>
@@ -23,9 +23,9 @@
   .element {
     position: absolute;
     width: 28px;
-    height: 84px;
+    height: 28px;
     border-radius: 14px;
-    transition: all ease 1200ms;
+    transition: all ease 1220ms;
     transform-origin: center;
     left: calc(50% - 14px);
     top: calc(50% - 41px);
