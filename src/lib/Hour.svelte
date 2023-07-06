@@ -11,9 +11,9 @@
 <style>
   .hour {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: calc(50% - 8px);
+    top: calc(50% - 8px);
+    transform:rotateZ(23deg);
   }
   .dot {
     width: 16px;

@@ -9,7 +9,6 @@
 
   let styleString = "";
   onMount(() => {
-    // console.log(positionObj);
     // @ts-ignore
     setTimeout(() => {
       styleString = `top:${positionObj.top}px;left:${positionObj.left}px;transform:rotateZ(${positionObj.rotateZ}deg);opacity: 1;height:104px`;
