@@ -1,50 +1,26 @@
 <script>
   import { onMount } from "svelte";
 
-  import { targetHexArray } from "../color.config";
-  import {
-    lightenHexColor,
-    darkenHexColor,
-    smoothColorTransition,
-    generateColorTransition,
-  } from "../util";
+  import { lightenHexColor } from "../util";
 
-  /**
-   * @type {string[][]}
-   */
-  let generColorMapper = [];
+  import { timeValue, colorArrayHexList } from "../store/index";
+
   /**
    * @type {string}
    */
   let backgroundColor = "";
   let longBackgroundColor = "";
 
-  targetHexArray.forEach((item, index) => {
-    const color = lightenHexColor(`#${item}`, 0.2);
-    const nextColor = lightenHexColor(
-      `#${targetHexArray[index === 11 ? 0 : index + 1]}`,
-      0.2
-    );
-    // @ts-ignore
-    generColorMapper.push(...generateColorTransition(color, nextColor, 30));
-  });
-
   onMount(() => {
-    const dom = document.querySelector(".minute");
-    let i = 0;
-    // @ts-ignore
-    setInterval(() => {
-      i++;
-      if (i === 360) {
-        i = 0;
-      }
+    timeValue.subscribe(({ minuteDegree }) => {
+      if (minuteDegree === undefined || !$colorArrayHexList.length) return;
+      const dom = document.querySelector(".minute");
       // @ts-ignore
-      backgroundColor = generColorMapper[i];
-      longBackgroundColor = lightenHexColor(backgroundColor, 0.1);
-
+      dom.style.transform = `rotateZ(${minuteDegree}deg)`;
       // @ts-ignore
-      dom.style.transform = `rotateZ(${i}deg)`;
-    }, 1000);
+      backgroundColor = $colorArrayHexList[minuteDegree];
+      longBackgroundColor = lightenHexColor(backgroundColor, 0.2);
+    });
   });
 </script>
 
@@ -64,18 +40,28 @@
     position: absolute;
     left: calc(50% - 8px);
     top: calc(50% - 8px);
-    transition: all ease 220ms;
+    transition: all ease 180ms;
+  }
+  .minute:after {
+    content: "";
+    position: absolute;
+    bottom: 24px;
+    border-radius: 8px;
+    width: 16px;
+    height: 186px;
+    background-color: transparent;
+    box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.1);
   }
   .dot {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #1e6196;
+    background-color: #fff;
   }
   .short-pencil {
     width: 6px;
     height: 14px;
-    background-color: #1e6196;
+    background-color: #fff;
     position: absolute;
     left: 50%;
     bottom: 14px;
@@ -87,12 +73,12 @@
     width: 16px;
     height: 186px;
     border-radius: 8px;
-    background-color: #1e6196;
+    background-color: #fff;
     padding: 4px;
     box-sizing: border-box;
   }
   .long-pencil-child {
-    background-color: #148cf1;
+    background-color: #fff;
     width: 100%;
     height: 100%;
     border-radius: 8px;

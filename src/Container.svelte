@@ -11,16 +11,30 @@
   import { clockEname } from "./color.config";
   import { onMount } from "svelte";
 
+  import MyWorker from "$lib/startTime?worker";
+  import { timeValue, colorArrayHexList } from "./store/index";
+
   let positionArray = [];
-  let isLoading = false;
-  onMount(() => {
+  let isLoading = null;
+  onMount(async () => {
+    const worker = new MyWorker();
+    worker.postMessage({ message: "run" });
+    worker.onmessage = function (event) {
+      const workerMessage = event.data;
+      if (workerMessage.length) {
+        return colorArrayHexList.update(() => workerMessage);
+      }
+      timeValue.update(() => {
+        return workerMessage;
+      });
+    };
+
     let i = 0;
     const dom = document.querySelector(".round");
     const child = dom.querySelector(".round-child");
     const container = document.querySelector(".container");
     const leftNum = container.getBoundingClientRect().left;
     const topNum = container.getBoundingClientRect().top;
-
     dom.style.transform = `rotateZ(${360}deg)`;
     let timer = setInterval(() => {
       let childPosition = child.getBoundingClientRect();
@@ -48,10 +62,12 @@
       <Element bind:className={clockEname[index]} bind:positionObj={item} />
     {/each}
   {/if}
-  <Minute />
-  <Hour />
-  <Second />
-  <Dot />
+  <div class="click-view">
+    <Minute />
+    <Hour />
+    <Second />
+    <Dot />
+  </div>
   <div class="round">
     <div class="round-child" />
   </div>
@@ -89,5 +105,23 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+  }
+  .click-view {
+    animation: showClick 260ms forwards;
+    animation-delay: 1640ms;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+  @keyframes showClick {
+    0% {
+      opacity: 0;
+      transform: scale(0.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 </style>

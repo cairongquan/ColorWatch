@@ -10,8 +10,11 @@
   let styleString = "";
   onMount(() => {
     // @ts-ignore
-    setTimeout(() => {
+    let timer = setTimeout(() => {
       styleString = `top:${positionObj.top}px;left:${positionObj.left}px;transform:rotateZ(${positionObj.rotateZ}deg);opacity: 1;height:104px`;
+      clearTimeout(timer);
+      // @ts-ignore
+      timer = null;
     }, 10);
   });
 </script>
@@ -24,7 +27,7 @@
     width: 28px;
     height: 28px;
     border-radius: 14px;
-    transition: all ease 1220ms;
+    transition: all ease 1200ms;
     transform-origin: center;
     left: calc(50% - 14px);
     top: calc(50% - 41px);

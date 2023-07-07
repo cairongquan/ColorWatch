@@ -113,4 +113,18 @@ export function generateColorTransition(startColor, endColor, numSegments) {
 }
 
 /** 初始化指针位置 */
-export function initClockPosition() {}
+export function initClockPosition() {
+  var now = new Date();
+  var currentHour = now.getHours();
+  var currentMinute = now.getMinutes();
+  // 计算小时刻度
+  var hourDegree = (currentHour % 12) * 30;
+  // 计算分钟刻度
+  var minuteDegree = currentMinute * 6;
+  // 考虑分钟对小时的影响
+  hourDegree += Math.floor(currentMinute / 2);
+  return {
+    hourDegree,
+    minuteDegree
+  }
+}
