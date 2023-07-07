@@ -31,8 +31,8 @@
     height: 206px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    backdrop-filter: blur(20px);
-    background: rgba(251, 251, 253, 0.8);
+    backdrop-filter: blur(15px);
+    background: rgba(251, 251, 253, 0.85);
   }
   .second-tail {
     margin: 0;
@@ -47,7 +47,7 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     background: rgba(251, 251, 253, 0.8);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(15px);
   }
   @keyframes move {
     0% {
