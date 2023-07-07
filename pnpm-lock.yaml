@@ -7,6 +7,7 @@ specifiers:
   '@sveltejs/adapter-static': ^2.0.2
   '@sveltejs/kit': ^1.20.4
   '@types/cookie': ^0.5.1
+  dayjs: ^1.11.9
   svelte: ^4.0.0
   svelte-check: ^3.4.3
   typescript: ^5.0.0
@@ -14,6 +15,7 @@ specifiers:
 
 dependencies:
   '@sveltejs/adapter-static': 2.0.2_@sveltejs+kit@1.21.0
+  dayjs: 1.11.9
 
 devDependencies:
   '@fontsource/fira-mono': 4.5.10
@@ -457,6 +459,10 @@ packages:
     dependencies:
       mdn-data: 2.0.30
       source-map-js: 1.0.2
+
+  /dayjs/1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}

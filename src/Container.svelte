@@ -7,6 +7,7 @@
   import Hour from "$lib/Hour.svelte";
   import Second from "$lib/Second.svelte";
   import Dot from "$lib/Dot.svelte";
+  import Time from "$lib/Time.svelte";
 
   import { clockEname } from "./color.config";
   import { onMount } from "svelte";
@@ -68,6 +69,9 @@
     <Second />
     <Dot />
   </div>
+  <div class="time-view">
+    <Time />
+  </div>
   <div class="round">
     <div class="round-child" />
   </div>
@@ -108,11 +112,20 @@
   }
   .click-view {
     animation: showClick 260ms forwards;
-    animation-delay: 1640ms;
+    animation-delay: 1440ms;
     opacity: 0;
     position: absolute;
     left: 50%;
     top: 50%;
+  }
+  .time-view {
+    position: absolute;
+    left: 50%;
+    top: 184px;
+    transform: translateX(-50%);
+    z-index: -99;
+    animation-delay: 1460ms;
+    animation: showTime 1220ms forwards;
   }
   @keyframes showClick {
     0% {
@@ -122,6 +135,14 @@
     100% {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+  @keyframes showTime {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 </style>
