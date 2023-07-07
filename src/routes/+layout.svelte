@@ -1,6 +1,7 @@
 <script>
   import "./styles.css";
   import Container from "../Container.svelte";
+  export const ssr = false;
 </script>
 
 <div class="app">
