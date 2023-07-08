@@ -1,11 +1,18 @@
 <script>
   import "./styles.css";
   import Container from "../Container.svelte";
+  import GitHub from "$lib/GitHub.svelte";
+  // import Full from "$lib/Full.svelte";
+
   export const ssr = false;
 </script>
 
 <div class="app">
   <Container />
+  <div class="bottom">
+    <GitHub />
+  </div>
+  <!-- <Full /> -->
 </div>
 
 <style>
@@ -13,5 +20,10 @@
     width: 100vw;
     height: 100vh;
     background-color: #fff;
+  }
+  .bottom {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
   }
 </style>
