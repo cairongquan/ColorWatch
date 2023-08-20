@@ -9,4 +9,4 @@ npm run preview
 
 ### 更新日记
 ## 2023-08-20
-- [x]添加了切换主题色功能(light/dark)
+- [x] 添加了切换主题色功能(light/dark)
