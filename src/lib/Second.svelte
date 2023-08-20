@@ -31,7 +31,7 @@
     height: 206px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
     background: rgba(251, 251, 253, 0.85);
   }
   .second-tail {

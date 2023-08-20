@@ -9,14 +9,29 @@
   import Dot from "$lib/Dot.svelte";
   import Time from "$lib/Time.svelte";
 
-  import { clockEname } from "./color.config";
   import { onMount } from "svelte";
 
   import MyWorker from "$lib/startTime?worker";
   import { timeValue, colorArrayHexList } from "./store/index";
 
   let positionArray = [];
-  let isLoading = null;
+  let isLoading = true;
+
+  const clockEname = [
+    "twelve",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+  ];
+
   onMount(async () => {
     const worker = new MyWorker();
     worker.postMessage({ message: "run" });
@@ -50,7 +65,7 @@
         clearInterval(timer);
         timer = null;
         container.removeChild(dom);
-        isLoading = true;
+        isLoading = false;
         return;
       }
     });
@@ -58,7 +73,7 @@
 </script>
 
 <div class="container">
-  {#if isLoading}
+  {#if !isLoading}
     {#each positionArray as item, index}
       <Element bind:className={clockEname[index]} bind:positionObj={item} />
     {/each}
@@ -98,7 +113,6 @@
     width: 348px;
     height: 348px;
     border-radius: 50%;
-    border: 1px solid #000;
   }
   .round-child {
     width: 1px;

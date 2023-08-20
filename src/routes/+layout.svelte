@@ -2,6 +2,7 @@
   import "./styles.css";
   import Container from "../Container.svelte";
   import GitHub from "$lib/GitHub.svelte";
+  import ChangeMode from "$lib/changeMode.svelte";
   // import Full from "$lib/Full.svelte";
 
   export const ssr = false;
@@ -11,6 +12,7 @@
   <Container />
   <div class="bottom">
     <GitHub />
+    <ChangeMode />
   </div>
   <!-- <Full /> -->
 </div>
@@ -25,5 +27,7 @@
     position: absolute;
     right: 20px;
     bottom: 20px;
+    display: flex;
+    align-items: center;
   }
 </style>

@@ -7,3 +7,5 @@ export const timeValue = writable({
 });
 
 export const colorArrayHexList = writable([]);
+
+export const themeMode = writable("light")

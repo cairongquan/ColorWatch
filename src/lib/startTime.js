@@ -18,7 +18,7 @@ self.onmessage = function (event) {
     let generColorMapper = [];
     targetHexArray.forEach((item, index) => {
       const color = lightenHexColor(`#${item}`, 0.2);
-      const nextColor = lightenHexColor(
+      const nextColor = lightenHexColor(  
         `#${targetHexArray[index === 11 ? 0 : index + 1]}`,
         0.2
       );
