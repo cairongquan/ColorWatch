@@ -9,13 +9,11 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="mode-change-btn" on:click={changeTheme}>
   {#if $timeValue.hourDegree}
-    <div>
-      {#if $themeMode === "light"}
-        <Moon color={$colorArrayHexList[$timeValue.hourDegree]} />
-      {:else}
-        <Sun color={$colorArrayHexList[$timeValue.hourDegree]} />
-      {/if}
-    </div>
+    {#if $themeMode === "light"}
+      <Moon size={24} color={$colorArrayHexList[$timeValue.hourDegree]} />
+    {:else}
+      <Sun size={24} color={$colorArrayHexList[$timeValue.hourDegree]} />
+    {/if}
   {/if}
 </div>
 
