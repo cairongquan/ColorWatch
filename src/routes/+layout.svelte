@@ -3,7 +3,7 @@
   import Container from "../Container.svelte";
   import GitHub from "$lib/GitHub.svelte";
   import ChangeMode from "$lib/changeMode.svelte";
-  // import Full from "$lib/Full.svelte";
+  import Full from "$lib/Full.svelte";
 
   export const ssr = false;
 </script>
@@ -13,6 +13,7 @@
   <div class="bottom">
     <GitHub />
     <ChangeMode />
+    <Full />
   </div>
   <!-- <Full /> -->
 </div>
