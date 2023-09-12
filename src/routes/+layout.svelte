@@ -1,6 +1,9 @@
 <script>
   import "./styles.css";
-  import Container from "../Container.svelte";
+
+  import ColorWacthContainer from "../ColorWacthContainer.svelte";
+  import SunWacthContainer from "../SunWacthContainer.svelte";
+
   import GitHub from "$lib/GitHub.svelte";
   import ChangeMode from "$lib/changeMode.svelte";
   import Full from "$lib/Full.svelte";
@@ -9,7 +12,8 @@
 </script>
 
 <div class="app">
-  <Container />
+  <!-- <ColorWacthContainer /> -->
+  <SunWacthContainer />
   <div class="bottom">
     <GitHub />
     <ChangeMode />
