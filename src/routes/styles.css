@@ -2,3 +2,24 @@
 	padding: 0;
 	margin: 0;
 }
+
+.sun-clock-child {
+	width: 12px;
+	height: 32px;
+	border-radius: 16px;
+	background-color: #042f6c;
+	transform-origin: top;
+	animation: showClockChild ease-in-out 190ms;
+}
+
+@keyframes showClockChild {
+	0% {
+		opacity: 0;
+		height: 6px;
+	}
+
+	100% {
+		opacity: 1;
+		height: 32px;
+	}
+}
