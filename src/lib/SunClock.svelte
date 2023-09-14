@@ -68,11 +68,11 @@
   </div>
   <div class="time-show-sun-box" style="opacity: {isLoading ? 1 : 0}">
     <div class="hours-sun-box">
-      {new Date($timeValue.timerInfo).getHours()}
+      {new Date($timeValue.timerInfo).getHours().toString().padStart(2, "0")}
     </div>
     <div class="clock-dot" />
     <div class="min-sun-box">
-      {new Date($timeValue.timerInfo).getMinutes()}
+      {new Date($timeValue.timerInfo).getMinutes().toString().padStart(2, "0")}
     </div>
   </div>
 </div>

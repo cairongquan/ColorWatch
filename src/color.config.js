@@ -27,3 +27,13 @@ export const targetHexArray = [
   "eaeaea",
   "d6d9da",
 ];
+
+export const sunColorHexArray = [
+  ['#0b1042', '#203284'],
+  ['#1d2764', '#3f4ec0'],
+  ['#173472', '#625db7'],
+  ['#2f50a9', '#cc9b72'],
+  ['#2b6be8', '#9bd5f9'],
+  ['#a9d9eb', '#3590fb'],
+  ['#191e65', '#4a54b6'],
+]

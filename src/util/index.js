@@ -128,3 +128,11 @@ export function initClockPosition() {
     minuteDegree
   }
 }
+
+/** 时间格式化 */
+export function initSunRiseSetData(sunRiseInfo) {
+  Object.keys(sunRiseInfo).forEach(key => {
+    key !== 'day_length' && (sunRiseInfo[key] = new Date(sunRiseInfo[key]).getTime())
+  })
+  return sunRiseInfo
+}

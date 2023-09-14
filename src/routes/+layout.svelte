@@ -1,4 +1,5 @@
 <script>
+  // @ts-nocheck
   import { onMount } from "svelte";
 
   import "./styles.css";
@@ -11,7 +12,12 @@
   import Full from "$lib/Full.svelte";
 
   import MyWorker from "$lib/startTime?worker";
-  import { timeValue, colorArrayHexList } from "../store/index";
+  import {
+    timeValue,
+    colorArrayHexList,
+    userLocalInfo,
+    sunColorHexArray,
+  } from "../store/index";
 
   export const ssr = false;
 
@@ -20,13 +26,41 @@
     worker.postMessage({ message: "run" });
     worker.onmessage = function (event) {
       const workerMessage = event.data;
-      if (workerMessage.length) {
-        return colorArrayHexList.update(() => workerMessage);
+      if (Object.hasOwn(workerMessage, "generColorMapper")) {
+        colorArrayHexList.update(() => workerMessage.generColorMapper);
+        sunColorHexArray.update(() => workerMessage.sunColorMapper);
+      } else {
+        timeValue.update(() => {
+          return workerMessage;
+        });
       }
-      timeValue.update(() => {
-        return workerMessage;
-      });
     };
+
+    const isSupportGeolLoc = navigator.geolocation ? true : false;
+    if (isSupportGeolLoc && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (res) => {
+          userLocalInfo.update(() => {
+            console.log({
+              longitude: res.coords.longitude,
+              latitude: res.coords.latitude,
+            });
+            return {
+              longitude: res.coords.longitude,
+              latitude: res.coords.latitude,
+            };
+          });
+        },
+        (err) => {
+          console.log(err);
+        },
+        {
+          maximumAge: 6000,
+          timeout: 15000,
+          enableHighAccuracy: true,
+        }
+      );
+    }
   });
 </script>
 
