@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   import "./styles.css";
 
   import ColorWacthContainer from "../ColorWacthContainer.svelte";
@@ -8,17 +10,34 @@
   import ChangeMode from "$lib/changeMode.svelte";
   import Full from "$lib/Full.svelte";
 
+  import MyWorker from "$lib/startTime?worker";
+  import { timeValue, colorArrayHexList } from "../store/index";
+
   export const ssr = false;
+
+  onMount(() => {
+    const worker = new MyWorker();
+    worker.postMessage({ message: "run" });
+    worker.onmessage = function (event) {
+      const workerMessage = event.data;
+      if (workerMessage.length) {
+        return colorArrayHexList.update(() => workerMessage);
+      }
+      timeValue.update(() => {
+        return workerMessage;
+      });
+    };
+  });
 </script>
 
 <div class="app">
   <!-- <ColorWacthContainer /> -->
   <SunWacthContainer />
-  <div class="bottom">
+  <!-- <div class="bottom">
     <GitHub />
     <ChangeMode />
     <Full />
-  </div>
+  </div> -->
   <!-- <Full /> -->
 </div>
 

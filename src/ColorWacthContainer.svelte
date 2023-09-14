@@ -11,9 +11,6 @@
 
   import { onMount } from "svelte";
 
-  import MyWorker from "$lib/startTime?worker";
-  import { timeValue, colorArrayHexList } from "./store/index";
-
   let positionArray = [];
   let isLoading = true;
 
@@ -33,18 +30,6 @@
   ];
 
   onMount(async () => {
-    const worker = new MyWorker();
-    worker.postMessage({ message: "run" });
-    worker.onmessage = function (event) {
-      const workerMessage = event.data;
-      if (workerMessage.length) {
-        return colorArrayHexList.update(() => workerMessage);
-      }
-      timeValue.update(() => {
-        return workerMessage;
-      });
-    };
-
     let i = 0;
     const dom = document.querySelector(".round");
     const child = dom.querySelector(".round-child");

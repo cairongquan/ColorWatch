@@ -1,25 +1,47 @@
 * {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'number-font';
+  src: url('./Rubik-Regular.ttf');
 }
 
 .sun-clock-child {
-	width: 12px;
-	height: 32px;
-	border-radius: 16px;
-	background-color: #042f6c;
-	transform-origin: top;
-	animation: showClockChild ease-in-out 190ms;
+  width: 12px;
+  height: 32px;
+  border-radius: 16px;
+  background-color: #042f6c;
+  transform-origin: top;
+  animation: showClockChild ease 190ms;
+  transition: all ease 220ms;
 }
 
 @keyframes showClockChild {
-	0% {
-		opacity: 0;
-		height: 6px;
-	}
+  0% {
+    opacity: 0;
+    height: 6px;
+  }
 
-	100% {
-		opacity: 1;
-		height: 32px;
-	}
+  100% {
+    opacity: 1;
+    height: 32px;
+  }
+}
+
+@keyframes secondSunAnimationForward {
+  0% {
+    background-color: rgba(246, 243, 254, .5);
+  }
+
+  100% {
+    background-color: #f7f3ff
+  }
+}
+
+@keyframes secondSunAnimationContrary {
+  100% {
+    background-color: #042f6c
+  }
 }

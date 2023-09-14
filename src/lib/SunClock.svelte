@@ -1,6 +1,8 @@
 <script>
   // @ts-nocheck
   import { onMount } from "svelte";
+  import { timeValue } from "../store/index";
+  let isLoading = false;
   onMount(() => {
     let i = 0;
     const container = document.querySelector(".sun-clock");
@@ -28,19 +30,50 @@
       i += 6;
       dom.style.transform = `rotateZ(${i}deg)`;
       if (i === 360) {
-        console.log("done");
         container.removeChild(dom);
         clearInterval(timer);
         timer = null;
+        i = 0;
+        const childrenDom = container.querySelectorAll(".sun-clock-child");
+        childrenDom[59].addEventListener("animationend", () => {
+          Array.from(childrenDom).forEach((dom) => {
+            dom.style.animation =
+              "secondSunAnimationContrary ease-in-out forwards 220ms";
+          });
+          formatAllChildClass();
+        });
+        formatAllChildClass();
+        isLoading = true;
         return;
       }
     }, 50);
   });
+
+  const formatAllChildClass = () => {
+    setTimeout(() => {
+      const container = document.querySelector(".sun-clock");
+      const childrenDom = container.querySelectorAll(".sun-clock-child");
+      Array.from(childrenDom).forEach((dom, index) => {
+        dom.style.animation = "secondSunAnimationForward ease-in-out forwards";
+        dom.style.animationDuration = "210ms";
+        dom.style.animationDelay = `${index}s`;
+      });
+    }, 120);
+  };
 </script>
 
 <div class="sun-clock">
   <div class="sun-clock-demo">
     <div class="sun-clock-dot" />
+  </div>
+  <div class="time-show-sun-box" style="opacity: {isLoading ? 1 : 0}">
+    <div class="hours-sun-box">
+      {new Date($timeValue.timerInfo).getHours()}
+    </div>
+    <div class="clock-dot" />
+    <div class="min-sun-box">
+      {new Date($timeValue.timerInfo).getMinutes()}
+    </div>
   </div>
 </div>
 
@@ -49,13 +82,14 @@
     width: 572px;
     height: 572px;
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(31px);
     z-index: 999;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
+    font-family: "number-font";
   }
   .sun-clock-demo {
     position: absolute;
@@ -75,5 +109,60 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+  }
+  .time-show-sun-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-size: 140px;
+    font-weight: bold;
+    color: #fdfbfc;
+    transition: all ease 420ms;
+  }
+  .clock-dot {
+    position: relative;
+    width: 62px;
+    height: 72px;
+  }
+  .clock-dot:after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fdfbfc;
+    position: absolute;
+    left: 50%;
+    top: calc(50% - 22px);
+    transform: translateX(-50%);
+    animation: dotAnimation ease-in-out 1.5s infinite;
+  }
+  .clock-dot:before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fdfbfc;
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 11px);
+    transform: translateX(-50%);
+    animation: dotAnimation ease-in-out 1.5s infinite;
+  }
+
+  @keyframes dotAnimation {
+    0% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.1;
+    }
   }
 </style>
