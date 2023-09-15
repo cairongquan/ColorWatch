@@ -21,3 +21,4 @@ export const userLocalInfo = writable({
 })
 export const sunRiseSetInfo = writable(initSunRiseSetData(sunRiseSetData.results))
 export const sunColorHexArray = writable([])
+export const baseRenderSunColorHexArray = writable([])

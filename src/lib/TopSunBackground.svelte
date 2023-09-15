@@ -1,22 +1,26 @@
 <script>
   import { onMount } from "svelte";
-  import { sunRiseSetInfo, sunColorHexArray } from "../store";
+  import {
+    sunRiseSetInfo,
+    sunColorHexArray,
+    baseRenderSunColorHexArray,
+  } from "../store";
 
   onMount(() => {
-    console.log($sunRiseSetInfo);
+    console.log($baseRenderSunColorHexArray);
   });
   let i = 0;
   setInterval(() => {
     i++;
-    if (i === 7) {
+    if (i === $baseRenderSunColorHexArray.length - 1) {
       i = 0;
     }
-  }, 2000);
+  }, 10);
 </script>
 
 <div
   class="top-sun-background"
-  style="background:linear-gradient({$sunColorHexArray[i]})"
+  style="background:linear-gradient({$baseRenderSunColorHexArray[i]})"
 />
 
 <style>

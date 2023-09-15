@@ -17,6 +17,7 @@
     colorArrayHexList,
     userLocalInfo,
     sunColorHexArray,
+    baseRenderSunColorHexArray,
   } from "../store/index";
 
   export const ssr = false;
@@ -29,6 +30,9 @@
       if (Object.hasOwn(workerMessage, "generColorMapper")) {
         colorArrayHexList.update(() => workerMessage.generColorMapper);
         sunColorHexArray.update(() => workerMessage.sunColorMapper);
+        baseRenderSunColorHexArray.update(
+          () => workerMessage.renderSunColorMapper
+        );
       } else {
         timeValue.update(() => {
           return workerMessage;

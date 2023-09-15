@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // 初始化计时器
 import {
   initClockPosition
@@ -36,10 +38,27 @@ self.onmessage = function (event) {
     const sunColorMapper = sunColorHexArray.map(colors => {
       return generateColorTransition(colors[0], colors[1], 12)
     })
-    console.log(sunColorMapper)
+    const tempColorArray = []
+    const renderSunColorMapper = []
+    sunColorMapper.forEach((colors, index) => {
+      if (index !== sunColorHexArray.length - 1) {
+        tempColorArray.push(colors)
+        let colorsTemp = colors.map((citem, cIndex) => {
+          return generateColorTransition(citem, sunColorMapper[index + 1][cIndex], 480)
+        })
+        for (let i = 0; i < 479; i++) {
+          let tempArray = []
+          for (let o = 0; o < 13; o++) {
+            tempArray.push(colorsTemp[o][i])
+          }
+          renderSunColorMapper.push(tempArray)
+        }
+      }
+    })
     self.postMessage({
       generColorMapper,
-      sunColorMapper
+      sunColorMapper,
+      renderSunColorMapper
     });
   }
 };
