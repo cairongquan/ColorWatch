@@ -1,12 +1,12 @@
 // @ts-nocheck
-
 // 初始化计时器
 import {
   initClockPosition
 } from "../util";
 import {
   targetHexArray,
-  sunColorHexArray
+  sunColorHexArray,
+  SunColorHexArrayBottom
 } from "../color.config";
 import {
   lightenHexColor,
@@ -38,11 +38,13 @@ self.onmessage = function (event) {
     const sunColorMapper = sunColorHexArray.map(colors => {
       return generateColorTransition(colors[0], colors[1], 12)
     })
-    const tempColorArray = []
+    const sunColorBottomMapper = SunColorHexArrayBottom.map(colors => {
+      return generateColorTransition(colors[0], colors[1], 12)
+    })
     const renderSunColorMapper = []
+    const renderSunColorMapperBottom = []
     sunColorMapper.forEach((colors, index) => {
       if (index !== sunColorHexArray.length - 1) {
-        tempColorArray.push(colors)
         let colorsTemp = colors.map((citem, cIndex) => {
           return generateColorTransition(citem, sunColorMapper[index + 1][cIndex], 480)
         })
@@ -55,10 +57,26 @@ self.onmessage = function (event) {
         }
       }
     })
+    sunColorBottomMapper.forEach((colors, index) => {
+      if (index !== SunColorHexArrayBottom.length - 1) {
+        let colorsTemp = colors.map((citem, cIndex) => {
+          return generateColorTransition(citem, sunColorBottomMapper[index + 1][cIndex], 480)
+        })
+        for (let i = 0; i < 479; i++) {
+          let tempArray = []
+          for (let o = 0; o < 13; o++) {
+            tempArray.push(colorsTemp[o][i])
+          }
+          renderSunColorMapperBottom.push(tempArray)
+        }
+      }
+    })
+
     self.postMessage({
       generColorMapper,
       sunColorMapper,
-      renderSunColorMapper
+      renderSunColorMapper,
+      renderSunColorMapperBottom
     });
   }
 };

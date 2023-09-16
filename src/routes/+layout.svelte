@@ -18,6 +18,7 @@
     userLocalInfo,
     sunColorHexArray,
     baseRenderSunColorHexArray,
+    baseRenderSunColorBottomHexArray,
   } from "../store/index";
 
   export const ssr = false;
@@ -30,6 +31,9 @@
       if (Object.hasOwn(workerMessage, "generColorMapper")) {
         colorArrayHexList.update(() => workerMessage.generColorMapper);
         sunColorHexArray.update(() => workerMessage.sunColorMapper);
+        baseRenderSunColorBottomHexArray.update(
+          () => workerMessage.renderSunColorMapperBottom
+        );
         baseRenderSunColorHexArray.update(
           () => workerMessage.renderSunColorMapper
         );
@@ -71,12 +75,11 @@
 <div class="app">
   <!-- <ColorWacthContainer /> -->
   <SunWacthContainer />
-  <!-- <div class="bottom">
+  <div class="bottom">
     <GitHub />
     <ChangeMode />
     <Full />
-  </div> -->
-  <!-- <Full /> -->
+  </div>
 </div>
 
 <style>

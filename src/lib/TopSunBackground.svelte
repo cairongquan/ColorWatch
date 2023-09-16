@@ -15,7 +15,7 @@
     if (i === $baseRenderSunColorHexArray.length - 1) {
       i = 0;
     }
-  }, 10);
+  }, 1);
 </script>
 
 <div

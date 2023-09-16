@@ -2,7 +2,7 @@
   import BottomSunBackground from "$lib/BottomSunBackground.svelte";
   import TopSunBackground from "$lib/TopSunBackground.svelte";
   import SunClock from "$lib/SunClock.svelte";
-  import { sunColorHexArray } from "./store";
+  import { sunColorHexArray, baseRenderSunColorBottomHexArray } from "./store";
 </script>
 
 <div class="sun-watch-container">
@@ -13,7 +13,9 @@
   </div>
   <SunClock />
   <div class="sun-watch-container__bottom">
-    <BottomSunBackground />
+    {#if $baseRenderSunColorBottomHexArray.length}
+      <BottomSunBackground />
+    {/if}
   </div>
 </div>
 
