@@ -23,3 +23,4 @@ export const sunRiseSetInfo = writable(initSunRiseSetData(sunRiseSetData.results
 export const sunColorHexArray = writable([])
 export const baseRenderSunColorHexArray = writable([])
 export const baseRenderSunColorBottomHexArray = writable([])
+export const baseRenderSunColorMiddleHexArray = writable([])

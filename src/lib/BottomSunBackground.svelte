@@ -4,17 +4,20 @@
     sunRiseSetInfo,
     sunColorHexArray,
     baseRenderSunColorBottomHexArray,
+    baseRenderSunColorMiddleHexArray,
   } from "../store";
 
-  onMount(() => {});
   let i = 0;
+  console.log(
+    $baseRenderSunColorMiddleHexArray,
+    "baseRenderSunColorMiddleHexArray"
+  );
   setInterval(() => {
     i++;
     if (i === $baseRenderSunColorBottomHexArray.length - 1) {
       i = 0;
     }
   }, 1);
-  console.log($baseRenderSunColorBottomHexArray);
 </script>
 
 <div
@@ -23,7 +26,7 @@
 >
   <div
     class="bottom-sun-background__bottom"
-    style="border-bottom-color:{$baseRenderSunColorBottomHexArray[i][0]};"
+    style="border-bottom-color:{$baseRenderSunColorMiddleHexArray[i]};"
   />
 </div>
 

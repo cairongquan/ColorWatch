@@ -72,11 +72,19 @@ self.onmessage = function (event) {
       }
     })
 
+    // middle color backgroundColor
+    const renderSunColorMapperMiddle = []
+    renderSunColorMapper.forEach((item, index) => {
+      const tempArray = []
+      console.log(item, 'item')
+    })
+
     self.postMessage({
       generColorMapper,
       sunColorMapper,
       renderSunColorMapper,
-      renderSunColorMapperBottom
+      renderSunColorMapperBottom,
+      renderSunColorMapperMiddle,
     });
   }
 };

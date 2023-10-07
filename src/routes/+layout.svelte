@@ -19,6 +19,7 @@
     sunColorHexArray,
     baseRenderSunColorHexArray,
     baseRenderSunColorBottomHexArray,
+    baseRenderSunColorMiddleHexArray,
   } from "../store/index";
 
   export const ssr = false;
@@ -36,6 +37,9 @@
         );
         baseRenderSunColorHexArray.update(
           () => workerMessage.renderSunColorMapper
+        );
+        baseRenderSunColorMiddleHexArray.update(
+          () => workerMessage.renderSunColorMapperMiddle
         );
       } else {
         timeValue.update(() => {
