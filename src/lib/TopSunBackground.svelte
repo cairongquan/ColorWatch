@@ -6,16 +6,13 @@
     baseRenderSunColorHexArray,
   } from "../store";
 
-  onMount(() => {
-    console.log($baseRenderSunColorHexArray);
-  });
   let i = 0;
   setInterval(() => {
     i++;
     if (i === $baseRenderSunColorHexArray.length - 1) {
       i = 0;
     }
-  }, 1);
+  }, 2000);
 </script>
 
 <div

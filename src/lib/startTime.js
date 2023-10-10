@@ -71,13 +71,12 @@ self.onmessage = function (event) {
         }
       }
     })
-
     // middle color backgroundColor
     const renderSunColorMapperMiddle = []
     renderSunColorMapper.forEach((item, index) => {
-      const tempArray = []
-      console.log(item, 'item')
+      renderSunColorMapperMiddle.push(generateColorTransition(item.at(-1), renderSunColorMapperBottom[index].at(0), 13))
     })
+
 
     self.postMessage({
       generColorMapper,
