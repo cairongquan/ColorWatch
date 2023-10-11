@@ -13,12 +13,12 @@
     const context = canvas.getContext("2d");
 
     canvas.width = window.innerWidth;
-    canvas.height = 180;
+    canvas.height = 120;
 
     context.beginPath();
     context.moveTo(canvas.width / 2, 0); // 移动到顶点
-    context.lineTo(0, 180); // 绘制到底左边角
-    context.lineTo(canvas.width, 180); // 绘制到底右边角
+    context.lineTo(0, 120); // 绘制到底左边角
+    context.lineTo(canvas.width, 120); // 绘制到底右边角
     context.closePath(); // 封闭路径
 
     setInterval(() => {
@@ -36,7 +36,7 @@
       }
       context.fillStyle = gradient;
       context.fill();
-    }, 2000);
+    }, 1);
   });
 </script>
 
@@ -50,12 +50,12 @@
 <style>
   .bottom-sun-background {
     width: 100vw;
-    height: calc(50vh - 80px);
+    height: calc(50vh - 120px);
     position: relative;
   }
   .bottom-sun-background__bottom {
     position: absolute;
-    top: -180px;
+    top: -120px;
     left: 0;
   }
 </style>

@@ -77,8 +77,8 @@
 </script>
 
 <div class="app">
-  <!-- <ColorWacthContainer /> -->
-  <SunWacthContainer />
+  <ColorWacthContainer />
+  <!-- <SunWacthContainer /> -->
   <div class="bottom">
     <GitHub />
     <ChangeMode />
