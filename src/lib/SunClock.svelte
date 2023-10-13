@@ -151,18 +151,5 @@
     left: 50%;
     top: calc(50% + 11px);
     transform: translateX(-50%);
-    animation: dotAnimation ease-in-out 1.5s infinite;
-  }
-
-  @keyframes dotAnimation {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
   }
 </style>

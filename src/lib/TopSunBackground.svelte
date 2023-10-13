@@ -1,18 +1,12 @@
 <script>
-  import { onMount } from "svelte";
-  import {
-    sunRiseSetInfo,
-    sunColorHexArray,
-    baseRenderSunColorHexArray,
-  } from "../store";
-
-  let i = 0;
-  setInterval(() => {
-    i++;
-    if (i === $baseRenderSunColorHexArray.length - 1) {
-      i = 0;
-    }
-  }, 1);
+  import { baseRenderSunColorHexArray } from "../store";
+  export let i = 0;
+  // setInterval(() => {
+  //   i++;
+  //   if (i === $baseRenderSunColorHexArray.length - 1) {
+  //     i = 0;
+  //   }
+  // }, 10);
 </script>
 
 <div

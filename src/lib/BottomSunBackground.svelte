@@ -6,7 +6,7 @@
     baseRenderSunColorMiddleHexArray,
   } from "../store";
 
-  let i = 0;
+  export let i = 0;
 
   onMount(() => {
     const canvas = document.querySelector(".bottom-sun-background__bottom");
@@ -20,15 +20,15 @@
     context.lineTo(0, 120); // 绘制到底左边角
     context.lineTo(canvas.width, 120); // 绘制到底右边角
     context.closePath(); // 封闭路径
+  });
 
-    setInterval(() => {
-      i++;
-      if (i === $baseRenderSunColorBottomHexArray.length - 1) {
-        i = 0;
-      }
+  $: {
+    const canvas = document.querySelector(".bottom-sun-background__bottom");
+    if (canvas) {
+      const context = canvas.getContext("2d");
       const gradient = context.createLinearGradient(0, 0, 0, canvas.height);
       const currentColorArray = $baseRenderSunColorMiddleHexArray[i];
-      for (var o = 0; o < currentColorArray.length; o++) {
+      for (let o = 0; o < currentColorArray.length; o++) {
         gradient.addColorStop(
           o / (currentColorArray.length - 1),
           currentColorArray[o]
@@ -36,8 +36,8 @@
       }
       context.fillStyle = gradient;
       context.fill();
-    }, 1);
-  });
+    }
+  }
 </script>
 
 <div

@@ -36,21 +36,21 @@ self.onmessage = function (event) {
       generColorMapper.push(...generateColorTransition(color, nextColor, 30));
     });
     const sunColorMapper = sunColorHexArray.map(colors => {
-      return generateColorTransition(colors[0], colors[1], 12)
+      return generateColorTransition(colors[0], colors[1], 18)
     })
     const sunColorBottomMapper = SunColorHexArrayBottom.map(colors => {
-      return generateColorTransition(colors[0], colors[1], 12)
+      return generateColorTransition(colors[0], colors[1], 18)
     })
     const renderSunColorMapper = []
     const renderSunColorMapperBottom = []
     sunColorMapper.forEach((colors, index) => {
       if (index !== sunColorHexArray.length - 1) {
         let colorsTemp = colors.map((citem, cIndex) => {
-          return generateColorTransition(citem, sunColorMapper[index + 1][cIndex], 480)
+          return generateColorTransition(citem, sunColorMapper[index + 1][cIndex], 520)
         })
-        for (let i = 0; i < 479; i++) {
+        for (let i = 0; i < 520; i++) {
           let tempArray = []
-          for (let o = 0; o < 13; o++) {
+          for (let o = 0; o < 18; o++) {
             tempArray.push(colorsTemp[o][i])
           }
           renderSunColorMapper.push(tempArray)
@@ -60,11 +60,11 @@ self.onmessage = function (event) {
     sunColorBottomMapper.forEach((colors, index) => {
       if (index !== SunColorHexArrayBottom.length - 1) {
         let colorsTemp = colors.map((citem, cIndex) => {
-          return generateColorTransition(citem, sunColorBottomMapper[index + 1][cIndex], 480)
+          return generateColorTransition(citem, sunColorBottomMapper[index + 1][cIndex], 520)
         })
-        for (let i = 0; i < 479; i++) {
+        for (let i = 0; i < 520; i++) {
           let tempArray = []
-          for (let o = 0; o < 13; o++) {
+          for (let o = 0; o < 18; o++) {
             tempArray.push(colorsTemp[o][i])
           }
           renderSunColorMapperBottom.push(tempArray)
@@ -74,7 +74,7 @@ self.onmessage = function (event) {
     // middle color backgroundColor
     const renderSunColorMapperMiddle = []
     renderSunColorMapper.forEach((item, index) => {
-      renderSunColorMapperMiddle.push(generateColorTransition(item.at(-1), renderSunColorMapperBottom[index].at(0), 13))
+      renderSunColorMapperMiddle.push(generateColorTransition(item.at(-1), renderSunColorMapperBottom[index].at(0), 90))
     })
 
 

@@ -1,3 +1,4 @@
+// ts-nocheck
 import {
     themeMode
 } from "../store/index";

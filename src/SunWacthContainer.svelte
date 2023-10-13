@@ -3,18 +3,26 @@
   import TopSunBackground from "$lib/TopSunBackground.svelte";
   import SunClock from "$lib/SunClock.svelte";
   import { sunColorHexArray, baseRenderSunColorBottomHexArray } from "./store";
+
+  let i = 0;
+  setInterval(() => {
+    if (i === $sunColorHexArray.length) {
+      i = 0;
+    }
+    i++;
+  }, 100);
 </script>
 
 <div class="sun-watch-container">
   <div class="sun-watch-container__top">
     {#if $sunColorHexArray.length}
-      <TopSunBackground />
+      <TopSunBackground {i} />
     {/if}
   </div>
   <SunClock />
   <div class="sun-watch-container__bottom">
     {#if $baseRenderSunColorBottomHexArray.length}
-      <BottomSunBackground />
+      <BottomSunBackground {i} />
     {/if}
   </div>
 </div>
