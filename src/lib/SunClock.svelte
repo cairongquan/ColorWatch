@@ -70,7 +70,10 @@
     <div class="hours-sun-box">
       {new Date($timeValue.timerInfo).getHours().toString().padStart(2, "0")}
     </div>
-    <div class="clock-dot" />
+    <div class="clock-dot">
+      <p>·</p>
+      <p>·</p>
+    </div>
     <div class="min-sun-box">
       {new Date($timeValue.timerInfo).getMinutes().toString().padStart(2, "0")}
     </div>
@@ -126,30 +129,7 @@
   }
   .clock-dot {
     position: relative;
-    width: 62px;
-    height: 72px;
-  }
-  .clock-dot:after {
-    content: "";
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fdfbfc;
-    position: absolute;
-    left: 50%;
-    top: calc(50% - 22px);
-    transform: translateX(-50%);
-    animation: dotAnimation ease-in-out 1.5s infinite;
-  }
-  .clock-dot:before {
-    content: "";
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fdfbfc;
-    position: absolute;
-    left: 50%;
-    top: calc(50% + 11px);
-    transform: translateX(-50%);
+    width: 40px;
+    text-align: center;
   }
 </style>

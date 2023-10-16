@@ -10,6 +10,7 @@
   import GitHub from "$lib/GitHub.svelte";
   import ChangeMode from "$lib/changeMode.svelte";
   import Full from "$lib/Full.svelte";
+  import ChangeWatch from "$lib/changeWatch.svelte";
 
   import MyWorker from "$lib/startTime?worker";
   import {
@@ -74,15 +75,25 @@
       );
     }
   });
+
+  let themeIndex = 0;
+  function changeWatch() {
+    themeIndex = Number(!themeIndex);
+  }
 </script>
 
 <div class="app">
-  <ColorWacthContainer />
-  <!-- <SunWacthContainer /> -->
+  {#if themeIndex === 0}
+    <ColorWacthContainer />
+  {/if}
+  {#if themeIndex === 1}
+    <SunWacthContainer />
+  {/if}
   <div class="bottom">
     <GitHub />
     <ChangeMode />
     <Full />
+    <ChangeWatch click={changeWatch} />
   </div>
 </div>
 

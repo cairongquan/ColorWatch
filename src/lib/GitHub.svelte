@@ -36,6 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
   }
   .github a {
     text-decoration: none;
