@@ -71,8 +71,7 @@
       {new Date($timeValue.timerInfo).getHours().toString().padStart(2, "0")}
     </div>
     <div class="clock-dot">
-      <p>·</p>
-      <p>·</p>
+      <span>·</span>
     </div>
     <div class="min-sun-box">
       {new Date($timeValue.timerInfo).getMinutes().toString().padStart(2, "0")}
@@ -129,7 +128,7 @@
   }
   .clock-dot {
     position: relative;
-    width: 40px;
+    width: 80px;
     text-align: center;
   }
 </style>

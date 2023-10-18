@@ -5,7 +5,7 @@ import {
 
 let themeFlag = false
 
-const themeDomList = ['.app', '.container', '.github', '.mode-change-btn', '.full-view', '.change-watch', '.hours-sun-box', '.clock-dot', '.min-sun-box']
+const themeDomList = ['.app', '.container', '.github', '.mode-change-btn', '.full-view', '.change-watch',]
 
 const themeDomColorByList = [{
     'dark': '#000000',
@@ -29,21 +29,6 @@ const themeDomColorByList = [{
   {
     dark: "#26292c",
     light: '#fff'
-  },
-  {
-    'dark': '#1a1a1a',
-    'light': '#ffffff',
-    'mode': 'text'
-  },
-  {
-    'dark': '#1a1a1a',
-    'light': '#ffffff',
-    'mode': 'text'
-  },
-  {
-    'dark': '#1a1a1a',
-    'light': '#ffffff',
-    'mode': 'text'
   },
 ]
 
