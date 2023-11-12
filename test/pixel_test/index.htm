@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="demo-box">
+    <canvas style="max-width:100%;max-height:100%"></canvas>
+  </div>
+</body>
+
+<script>
+  // const demoLogo = [
+  //   [0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+  //   [0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+  //   [0, 0, 0, 0, 1, 1, 1, 1, 0, 0],
+  //   [0, 0, 0, 1, 1, 0, 1, 1, 0, 0],
+  //   [0, 0, 1, 1, 0, 0, 1, 1, 0, 0],
+  //   [0, 1, 1, 0, 0, 0, 1, 1, 0, 0],
+  //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  //   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  //   [0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 1, 1, 0, 0]]
+  const demoLogo = [
+    [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+    [0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0],
+    [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0],
+    [0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ]
+
+  const svgMap = {
+    Vue: {
+      color: "#377ee8",
+      logo: [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2],
+        [2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2],
+        [2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2],
+        [2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2],
+        [0, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 0],
+        [0, 2, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 2, 0],
+        [0, 0, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 0, 0],
+        [0, 0, 0, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 0, 0, 0],
+        [0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0],
+        [0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 1, 1, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    }
+  }
+
+
+  function createPathsFromLogoData(logoData, cellSize, radius) {
+    const numRows = logoData.length;
+    const numCols = logoData[0].length;
+    const paths = [];
+    let x = 0; // 初始 x 坐标
+    let d1 = ''; // 第一个路径的 d 值
+    let d2 = ''; // 第二个路径的 d 值
+    for (let i = 0; i < numRows; i++) {
+      const y = i * cellSize;
+      for (let j = 0; j < numCols; j++) {
+        const value = logoData[i][j];
+        if (value === 1) {
+          d1 +=
+            `M${Math.round(x)} ${Math.round(y)} m${-radius} 0 a${radius},${radius} 0 1,0 ${radius * 2} 0 a${radius},${radius} 0 1,0 ${-radius * 2} 0 `;
+        } else if (value === 2) {
+          d2 +=
+            `M${Math.round(x)} ${Math.round(y)} m${-radius} 0 a${radius},${radius} 0 1,0 ${radius * 2} 0 a${radius},${radius} 0 1,0 ${-radius * 2} 0 `;
+        }
+        x += cellSize;
+      }
+      x = 0; // 重置 x 坐标
+    }
+    if (d1 !== '') {
+      const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path1.setAttribute('d', d1);
+      path1.setAttribute('fill', '#000'); // 设置颜色
+      paths.push(path1);
+    }
+    if (d2 !== '') {
+      const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path2.setAttribute('d', d2);
+      path2.setAttribute('fill', '#171717'); // 设置颜色
+      path2.setAttribute('opacity', '0.5');
+      paths.push(path2);
+    }
+    return paths;
+  }
+
+
+  // render()
+  const cellSize = 0.011114; // 设置为你的单元格大小
+  const radius = 0.00013; // 设置为你的半径大小
+  // createPathsFromLogoData(svgMap.Vue.logo, cellSize, radius).forEach(dom => {
+  //   document.querySelector('svg').appendChild(dom)
+  // })
+
+  const canvasDom = document.querySelector('canvas')
+  const rawData = {
+    color: '#377ee8',
+    logo: demoLogo,
+    canvas: canvasDom,
+    active: {
+      current: false
+    },
+    renderScale: 10,
+    theme: 'light'
+  }
+
+  const colorCurrent = originAnimation(rawData)
+  colorCurrent.start()
+
+
+  canvasDom.addEventListener('mouseenter', () => {
+    rawData.active.current = true
+    colorCurrent.start()
+  })
+
+  canvasDom.addEventListener('mouseleave', async () => {
+    rawData.active.current = false
+    colorCurrent.stop()
+  })
+
+  function originAnimation(e) {
+    let {
+      color: t,
+      colorSecondary: r,
+      logo: i,
+      canvas: n,
+      active: a,
+      renderScale: l = 2,
+      transitionSpeed: s = 1,
+      theme: o
+    } = e;
+    performance.now();
+
+    function C(e) {
+      let t = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e.replace("0x", "#"));
+      return t ? [parseInt(t[1], 16), parseInt(t[2], 16), parseInt(t[3], 16)] : [0, 0, 0]
+    }
+    let L = 0,
+      c = !1,
+      d = 0,
+      u = [],
+      h = [],
+      f = [];
+    for (let e = 0; e < i.length; e++) {
+      u[e] = [],
+        h[e] = [],
+        f[e] = [];
+      for (let t = 0; t < i[e].length; t++)
+        u[e][t] = Math.random(),
+        h[e][t] = y(Math.random(), .1, .9),
+        f[e][t] = 0
+    }
+    let p = .1 * s,
+      g = "dark" === o ? "#ffffff" : "#000000",
+      _ = C(g),
+      m = C(t || g),
+      x = r ? C(r) : m,
+      v = r ? 1 : .5;
+
+    function y(e, t, r) {
+      return e <= t ? t : e >= r ? r : e
+    }
+
+    function b() {
+      if (performance.now(),
+        L = requestAnimationFrame(b),
+        !(null == a ? void 0 : a.current) && 0 === d && c)
+        return;
+      let e = n.getContext("2d");
+      if (!e)
+        return;
+      let t = Math.ceil(performance.now() / 90),
+        r = n.clientWidth * l,
+        s = n.clientHeight * l;
+      n.width = r,
+        n.height = s;
+      let o = Math.min(r / i[0].length, s / i.length);
+      e.clearRect(0, 0, r, s),
+        d = 0;
+      for (let r = 0; r < i.length; r++)
+        for (let n = 0; n < i[r].length; n++) {
+          var C, g;
+          let l;
+          let s = u[r][n],
+            L = h[r][n],
+            c = y(.5 * Math.sin(t * s) + 1, 0, 1),
+            b = f[r][n];
+          b > d && (d = b),
+            f[r][n] = (null == a ? void 0 : a.current) ? Math.min(b + p * L, 1) : Math.max(b - p * L, 0);
+          let j = {
+              color: y(2 * b, 0, 1),
+              alpha: b
+            },
+            w = m.map(e => {
+              var t, r;
+              return t = _[0],
+                (1 - (r = j.color)) * t + r * e
+            }),
+            k = x.map(e => {
+              var t, r;
+              return t = _[0],
+                (1 - (r = j.color)) * t + r * e
+            }),
+            M = (1 - (C = j.color)) * 0 + 1 * C,
+            N = (1 - (g = j.alpha)) * 1 + g * c,
+            V = `${w[0]},${w[1]},${w[2]}`,
+            E = `${k[0]},${k[1]},${k[2]}`;
+          switch (i[r][n]) {
+            case 1:
+              l = `rgba(${V},${N})`;
+              break;
+            case 2:
+              l = `rgba(${E},${N * v})`;
+              break;
+            case 3:
+              l = `rgba(255,255,255, ${2 * N * M})`;
+              break;
+            default:
+              continue
+          }
+          e.fillStyle = l
+          e.fillRect(n * o + o / 2, r * o + o / 2, o / 2, o * 0.5, o * 0.5);
+
+          // e.beginPath(),
+          //   e.arc(n * o + o / 2, r * o + o / 2, o / 2, 0, 2 * Math.PI),
+          //   e.fillStyle = l,
+          //   e.fill()
+        }
+      // c = !0
+    }
+    return {
+      start: () => requestAnimationFrame(b),
+      stop: () => cancelAnimationFrame(L)
+    }
+  }
+
+</script>
+
+</html>

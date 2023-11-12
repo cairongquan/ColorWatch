@@ -1,7 +1,7 @@
 <script>
   // @ts-nocheck
   import Element from "$lib/Element.svelte";
-  import "./element.style.css";
+  import "./style/element.style.css";
 
   import Minute from "$lib/Minute.svelte";
   import Hour from "$lib/Hour.svelte";

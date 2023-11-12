@@ -13,8 +13,9 @@
 
   onMount(() => {
     timeValue.subscribe(({ minuteDegree }) => {
-      if (minuteDegree === undefined || !$colorArrayHexList.length) return;
       const dom = document.querySelector(".minute");
+      if (minuteDegree === undefined || !$colorArrayHexList.length || !dom)
+        return;
       // @ts-ignore
       dom.style.transform = `rotateZ(${minuteDegree}deg)`;
       // @ts-ignore

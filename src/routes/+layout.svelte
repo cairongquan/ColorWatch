@@ -6,13 +6,14 @@
 
   import ColorWacthContainer from "../ColorWacthContainer.svelte";
   import SunWacthContainer from "../SunWacthContainer.svelte";
+  import PixelWatchContainer from "../PixelWatchContainer.svelte";
 
   import GitHub from "$lib/GitHub.svelte";
   import ChangeMode from "$lib/changeMode.svelte";
   import Full from "$lib/Full.svelte";
   import ChangeWatch from "$lib/changeWatch.svelte";
 
-  import MyWorker from "$lib/startTime?worker";
+  import MyWorker from "../util/startTime?worker";
   import {
     timeValue,
     colorArrayHexList,
@@ -83,18 +84,19 @@
 </script>
 
 <div class="app">
-  {#if themeIndex === 0}
+  <!-- {#if themeIndex === 0}
     <ColorWacthContainer />
   {/if}
   {#if themeIndex === 1}
     <SunWacthContainer />
-  {/if}
-  <div class="bottom">
+  {/if} -->
+  <PixelWatchContainer />
+  <!-- <div class="bottom">
     <GitHub />
     <ChangeMode />
     <Full />
     <ChangeWatch click={changeWatch} />
-  </div>
+  </div> -->
 </div>
 
 <style>

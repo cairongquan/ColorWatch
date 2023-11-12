@@ -2,7 +2,7 @@
   import { Moon, Sun } from "lucide-svelte";
   import { timeValue, colorArrayHexList, themeMode } from "../store/index";
 
-  import { changeTheme } from "./changeTheme";
+  import { changeTheme } from "../util/changeTheme";
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->

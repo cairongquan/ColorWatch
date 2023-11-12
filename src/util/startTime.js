@@ -2,7 +2,7 @@
 // 初始化计时器
 import {
   initClockPosition
-} from "../util";
+} from ".";
 import {
   targetHexArray,
   sunColorHexArray,
@@ -11,7 +11,7 @@ import {
 import {
   lightenHexColor,
   generateColorTransition
-} from "../util";
+} from ".";
 
 let timer = null;
 // 监听主线程的消息
