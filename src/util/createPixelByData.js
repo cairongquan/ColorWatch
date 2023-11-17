@@ -101,13 +101,13 @@
             default:
               continue
           }
-          e.fillStyle = l
-          e.fillRect(n * o + o / 2, r * o + o / 2, o / 2, o * 0.5, o * 0.5);
+          // e.fillStyle = l
+          // e.fillRect(n * o + o / 2, r * o + o / 2, o / 2, o * 0.5, o * 0.5);
 
-          // e.beginPath(),
-          //   e.arc(n * o + o / 2, r * o + o / 2, o / 2, 0, 2 * Math.PI),
-          //   e.fillStyle = l,
-          //   e.fill()
+          e.beginPath(),
+            e.arc(n * o + o / 2, r * o + o / 2, o / 2, 0, 2 * Math.PI),
+            e.fillStyle = l,
+            e.fill()
         }
       // c = !0
     }

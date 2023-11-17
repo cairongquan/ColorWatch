@@ -20,7 +20,6 @@
     height: 100vh;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    background-color: #3e3e3e;
     position: relative;
   }
   .pixel_content {
