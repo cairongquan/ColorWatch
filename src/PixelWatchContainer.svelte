@@ -4,6 +4,7 @@
 </script>
 
 <div id="PixelWatchContainer">
+  <div class="PixelWatchContainer_bg" />
   <div class="pixel_content">
     <div class="pixel_content_one">
       <PixelHour />
@@ -16,11 +17,20 @@
 
 <style>
   #PixelWatchContainer {
+    background-color: #3b3d4a;
     width: 100vw;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position: relative;
+  }
+  .PixelWatchContainer_bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(10px);
   }
   .pixel_content {
     min-width: 400px;
