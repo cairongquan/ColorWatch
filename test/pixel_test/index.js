@@ -90,8 +90,8 @@ function generatePathMatrix(fontPath, text, fontSize, resolution = 50, tolerance
 }
 
 // 示例数据
-const fontPath = './Rubik-Regular.ttf';
-const text = '9';
+const fontPath = '../SourceCodePro-Regular-12.ttf';
+const text = '0';
 const fontSize = 100;
 
 const resolution = 18;

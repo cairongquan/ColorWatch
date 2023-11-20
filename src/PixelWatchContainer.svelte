@@ -40,13 +40,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    display: flex;
-    justify-content: space-between;
   }
   .pixel_content_one {
     margin-right: 20px;
+    margin-bottom: 10px;
   }
   .pixel_content_second {
     margin-left: 20px;
+    margin-top: 10px;
   }
 </style>
