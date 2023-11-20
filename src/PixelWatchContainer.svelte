@@ -17,7 +17,7 @@
 
 <style>
   #PixelWatchContainer {
-    background-color: #3b3d4a;
+    background-color: #ececec;
     width: 100vw;
     height: 100vh;
     background-repeat: no-repeat;
@@ -43,10 +43,10 @@
   }
   .pixel_content_one {
     margin-right: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
   }
   .pixel_content_second {
     margin-left: 20px;
-    margin-top: 10px;
+    margin-top: 30px;
   }
 </style>
