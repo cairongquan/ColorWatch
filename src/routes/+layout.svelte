@@ -79,24 +79,29 @@
 
   let themeIndex = 0;
   function changeWatch() {
-    themeIndex = Number(!themeIndex);
+    if (themeIndex === 2) {
+      return (themeIndex = 0);
+    }
+    themeIndex++;
   }
 </script>
 
 <div class="app">
-  <!-- {#if themeIndex === 0}
+  {#if themeIndex === 0}
     <ColorWacthContainer />
   {/if}
   {#if themeIndex === 1}
     <SunWacthContainer />
-  {/if} -->
-  <PixelWatchContainer />
-  <!-- <div class="bottom">
+  {/if}
+  {#if themeIndex === 2}
+    <PixelWatchContainer />
+  {/if}
+  <div class="bottom">
     <GitHub />
     <ChangeMode />
     <Full />
     <ChangeWatch click={changeWatch} />
-  </div> -->
+  </div>
 </div>
 
 <style>

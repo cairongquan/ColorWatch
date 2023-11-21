@@ -3,7 +3,7 @@
   import PixelMinute from "$lib/pixelMinute.svelte";
 </script>
 
-<div id="PixelWatchContainer">
+<div id="PixelWatchContainer" class="PixelWatchContainer">
   <div class="PixelWatchContainer_bg" />
   <div class="pixel_content">
     <div class="pixel_content_one">
@@ -17,7 +17,7 @@
 
 <style>
   #PixelWatchContainer {
-    background-color: #ececec;
+    background-color: #efefef;
     width: 100vw;
     height: 100vh;
     background-repeat: no-repeat;

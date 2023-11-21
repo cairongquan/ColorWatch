@@ -5,7 +5,7 @@ import {
 
 let themeFlag = false
 
-const themeDomList = ['.app', '.container', '.github', '.mode-change-btn', '.full-view', '.change-watch',]
+const themeDomList = ['.app', '.container', '.github', '.mode-change-btn', '.full-view', '.change-watch', '.PixelWatchContainer']
 
 const themeDomColorByList = [{
     'dark': '#000000',
@@ -30,6 +30,10 @@ const themeDomColorByList = [{
     dark: "#26292c",
     light: '#fff'
   },
+  {
+    dark: '#323442',
+    light: '#efefef'
+  }
 ]
 
 export function changeTheme() {
