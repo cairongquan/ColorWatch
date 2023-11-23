@@ -6,11 +6,11 @@
 
   let i = 0;
   setInterval(() => {
-    if (i === $sunColorHexArray.length) {
+    if (i === $baseRenderSunColorBottomHexArray.length) {
       i = 0;
     }
     i++;
-  }, 100);
+  }, 50);
 </script>
 
 <div class="sun-watch-container">
